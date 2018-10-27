@@ -9,18 +9,26 @@ public protocol FloatingPanelBehavior {
     // Returns a UIViewPropertyAnimator object for interacting with a floating panel by a user pan gesture
     func interactionAnimator(_ fpc: FloatingPanelController, to targetPosition: FloatingPanelPosition, with velocity: CGVector) -> UIViewPropertyAnimator
 
-    // Returns a UIViewPropertyAnimator object to present a floating panel
-    func presentAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition, to: FloatingPanelPosition) -> UIViewPropertyAnimator
-    // Returns a UIViewPropertyAnimator object to dismiss a floating panel
-    func dismissAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition) -> UIViewPropertyAnimator
+    // Returns a UIViewPropertyAnimator object to add a floating panel to a position.
+    func addAnimator(_ fpc: FloatingPanelController, to: FloatingPanelPosition) -> UIViewPropertyAnimator
+
+    // Returns a UIViewPropertyAnimator object to move a floating panel from a position to a position.
+    func moveAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition, to: FloatingPanelPosition) -> UIViewPropertyAnimator
+
+    // Returns a UIViewPropertyAnimator object to remove a floating panel from a position.
+    func removeAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition) -> UIViewPropertyAnimator
 }
 
 public extension FloatingPanelBehavior {
-    func presentAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition, to: FloatingPanelPosition) -> UIViewPropertyAnimator {
+    func addAnimator(_ fpc: FloatingPanelController, to: FloatingPanelPosition) -> UIViewPropertyAnimator {
         return UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut)
     }
 
-    func dismissAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition) -> UIViewPropertyAnimator {
+    func moveAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition, to: FloatingPanelPosition) -> UIViewPropertyAnimator {
+        return UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut)
+    }
+
+    func removeAnimator(_ fpc: FloatingPanelController, from: FloatingPanelPosition) -> UIViewPropertyAnimator {
         return UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut)
     }
 }
